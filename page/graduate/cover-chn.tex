@@ -7,9 +7,9 @@
         % 单位代码：         & \uline{\hfill 10335 \hfill} \\
         % 密{\quad}级：      & \underline{注明密级与保密期限} &
         % 学{\quad\quad}号： & \underline{\multido{}{4}{\quad}}
-        分类号：           & \underline{\hfill \ClassNumber \hfill}  &
+        分类号：           & \underline{\quad \ClassNumber \quad}  &
         单位代码：         & \uline{\hfill 10335 \hfill} \\
-        密{\quad}级：      & \underline{\hfill \Security \hfill} &
+        密{\quad}级：      & \underline{\quad\ \ 公开\quad \ } &
         学{\quad\quad}号： & \underline{
             \ifthenelse{\equal{\BlindReview}{true}}
             {
@@ -70,7 +70,7 @@
 
 \begin{center}
     \bfseries \zihao{-2}
-    \begin{tabularx}{.8\textwidth}{>{\fangsong}l X<{\centering}}
+    \begin{tabularx}{.94\textwidth}{>{\fangsong}l X<{\centering}}
         % If titles are too long for one row, please manually hardcode them in
         % multiple lines, as the english title example here.
         \ifthenelse{\equal{\TitleLines}{1}}
@@ -117,7 +117,7 @@
     \end{tabularx}
 \end{center}
 
-\renewcommand{\arraystretch}{1}
+% \renewcommand{\arraystretch}{1}
 
 \ifthenelse{\equal{\DepartmentLines}{1}}
 {
