@@ -63,7 +63,7 @@
 为了计算方便，令$E=0$，从而简化魔术公式模型的表达式:
 \begin{equation}
 \begin{aligned}
-    F_{y,i}(\alpha_i)=D_i\sin{(C_i\arctan{(B_i\alpha_i)})},i\in\{f,r\}
+    F_{y,i}(\alpha_i)=D_i\sin{(C_i\arctan{(B_i\alpha_i)})},\ i\in\{f,r\}
 \end{aligned}
 \end{equation}
 简化后的魔术公式模型仍然能够较好地描述轮胎的横向力特性，并且减少了模型的复杂度，便于后续的控制设计和参数辨识。
@@ -207,7 +207,7 @@
 其中，$\partial \mathcal{C}$表示安全集合的边界，$\text{Int}(\mathcal{C})$表示安全集合的内部。那么系统的安全性由安全集$\mathcal{C}$的正向不变性定义，即如果系统初始状态$\boldsymbol{x}(0)$在$\mathcal{C}$内，那么系统状态$\boldsymbol{x}(t)$在任意时间$t\geq 0$都在$\mathcal{C}$内。这要求系统满足以下条件：
 \begin{equation}
 \begin{aligned}
-    \dot{h}(\boldsymbol{x})=\frac{\partial h(\boldsymbol{x})}{\partial \boldsymbol{x}}\dot{\boldsymbol{x}} \geq 0, \forall \boldsymbol{x}\in \partial \mathcal{C}
+    \dot{h}(\boldsymbol{x})=\frac{\partial h(\boldsymbol{x})}{\partial \boldsymbol{x}}\dot{\boldsymbol{x}} \geq 0, \ \forall \boldsymbol{x}\in \partial \mathcal{C}
 \end{aligned}
 \end{equation}
 换句话说，在安全集合的边界$\partial \mathcal{C}$上，系统状态的变化率$\dot{h}(\boldsymbol{x})$必须非负，以确保系统状态不会离开安全集合。
