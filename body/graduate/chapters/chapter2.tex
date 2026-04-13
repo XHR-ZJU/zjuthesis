@@ -130,7 +130,7 @@
 \end{aligned}
 \label{equ:tire-forces}
 \end{equation}
-由此可知辨识轮胎参数需要获取车辆的状态数据$\dot{v_y}$、$v_x$、$\omega$和$\dot{\omega}$，以及控制输入数据$\delta$。其中，$\dot{v_y}$和$\omega$可以通过安装在车辆上的IMU传感器测量得到，IMU传感器中的噪声使用低通滤波器来消除，截止频率为30Hz；$\dot{\omega}$可以通过对$\omega$进行数值微分得到，同样需要进行滤波处理以减少噪声的影响；$v_x$则使用IMU传感器提供的加速度和角速度与动作捕捉系统提供的位置与姿态信息进行拓展卡尔曼滤波（Extended Kalman Filter，简称EKF）融合计算得到；$\delta$可以通过记录控制输入数据获得。根据公式（\ref{equ:tire-forces}）计算得到轮胎侧向力后可进行最小二乘拟合来辨识魔术公式模型中的参数$B$、$C$、$D$：
+由此可知辨识轮胎参数需要获取车辆的状态数据$\dot{v_y}$、$v_x$、$\omega$和$\dot{\omega}$，以及控制输入数据$\delta$。其中，$\dot{v_y}$和$\omega$可以通过安装在车辆上的IMU传感器测量得到，IMU传感器中的噪声使用低通滤波器来消除，截止频率为30 Hz；$\dot{\omega}$可以通过对$\omega$进行数值微分得到，同样需要进行滤波处理以减少噪声的影响；$v_x$则使用IMU传感器提供的加速度和角速度与动作捕捉系统提供的位置与姿态信息进行拓展卡尔曼滤波（Extended Kalman Filter，简称EKF）融合计算得到；$\delta$可以通过记录控制输入数据获得。根据公式（\ref{equ:tire-forces}）计算得到轮胎侧向力后可进行最小二乘拟合来辨识魔术公式模型中的参数$B$、$C$、$D$：
 \begin{equation}
 \begin{aligned}
     \min_{B_{f/r},C_{f/r},D_{f/r}} \quad & \frac{1}{N}\sum_{j=1}^{N}(F_{y,f/r}^j-D_{f/r}\sin{(C_{f/r}\arctan{(B_{f/r}\alpha_{f/r}^j)})})^2\\
@@ -488,7 +488,7 @@ h_2^j(\tilde{\boldsymbol{x}}_{t+k|t})=\frac{(\theta_{t+k|t}-\theta^j_{t+k|t})^2}
 \label{fig:car-platform-and-system}
 \end{figure}
 
-实车实验在一个长为13m，宽为7m的赛道上进行，如图\ref{fig:real-map}所示。本文中采用了Cartographer算法\cite{hess2016real}作为地图构建算法，构建好地图后手动遥控赛车在赛道上行驶一圈来记录赛车定位，并经过一次平滑处理后得到赛道中心线。赛道中心线被离散化为100个点，并通过三次样条插值来生成连续的赛道中心线函数。实车实验中，MPCC-CBF控制器以50Hz的频率进行控制输入的计算和更新，以实现实时的竞速控制。
+实车实验在一个长为13m，宽为7m的赛道上进行，如图\ref{fig:real-map}所示。本文中采用了Cartographer算法\cite{hess2016real}作为地图构建算法，构建好地图后手动遥控赛车在赛道上行驶一圈来记录赛车定位，并经过一次平滑处理后得到赛道中心线。赛道中心线被离散化为100个点，并通过三次样条插值来生成连续的赛道中心线函数。实车实验中，MPCC-CBF控制器以50 Hz的频率进行控制输入的计算和更新，以实现实时的竞速控制。
 
 实车实验中，MPCC-CBF控制器能够成功地控制赛车沿着赛道进行竞速，同时保持安全距离，避免与赛道边界发生碰撞。图\ref{fig:real-trajectory}展示了实车实验中的运动轨迹，图\ref{fig:real-cbf}展示了控制障碍函数的变化曲线，图\ref{fig:real-control}展示了对应的控制输入变化曲线，表\ref{tab:real-experiment-results}展示了实车实验的结果。可以看出，实物赛车可以安全高速地完成竞速任务；控制输入的变化也比较平滑；滞后误差较小，控制器能准确估计赛车在赛道上的位置。在拐入弯道时，赛车采用入弯前外侧、入弯内侧、出弯外侧的行驶策略来提高过弯性能。CBF值在整个竞速过程中始终保持在安全范围内，即$h(x) \geq 0$，避免了潜在的碰撞风险。
 \begin{figure}[H]
